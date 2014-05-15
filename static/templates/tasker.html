@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="tasker">
+  <head>
+    <meta charset="UTF-8">
+    <script src="/static/3party/jquery-1.7.min.js"></script>
+    <script src="/static/3party/select2.js"></script>
+    <script src="/static/3party/moment.min.js"></script>
+    <script src="/static/3party/angular.js"></script>
+    <script src="/static/3party/angular-route.js"></script>
+    <script src="/static/3party/angular-ui-router.js"></script>
+    <script src="/static/3party/angular-sanitize.js"></script>
+    <script src="/static/3party/angular-moment.js"></script>
+    <script src="/static/3party/ng-table.js"></script>
+    <script src="/static/3party/underscore.js"></script>
+    <script src="/static/3party/restangular.js"></script>
+    <script src="/static/3party/showdown.js"></script>
+    <script src="/static/scripts/tasker.js"></script>
+    <link href="/static/style/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/style/bootflat.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/style/ng-table.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/style/select2.css" rel="stylesheet" type="text/css"/>
+    <title>Das Organization!</title>
+  </head>
+
+  <body style="padding: 30px" ng-controler="tasker-ctrl">
+    <h1>HouseTasker</h1>
+
+<div class="panel">
+  <ul id="tabs-title" class="nav nav-tabs nav-justified">
+    <li ng-class="active == 'list' ? 'active' : ''">
+      <a data-toggle="tab" ng-click="active = 'list'">TaskList</a>
+    </li>
+    <li ng-class="active == 'dep' ? 'active' : ''">
+      <a data-toggle="tab" ng-click="active = 'dep'">Dependencies</a>
+    </li>
+    <li ng-class="active == 'time' ? 'active' : ''">
+      <a data-toggle="tab" ng-click="active = 'time'">Timeline</a>
+    </li>
+    <li ng-class="active == 'todo' ? 'active' : ''">
+      <a data-toggle="tab" ng-click="active = 'todo'">Todo</a>
+    </li>
+  </ul>
+
+  <div id="tabs-content" class="tab-content">
+    <div ng-class="active == 'list' ? 'active' : ''" class="tab-pane fade in">
+      <table show-filter="true" ng-table="mngtable"
+             class="table ng-table-responsive">
+        <tbody>
+          <tr ng-repeat="task in $data">
+            <td data-title="'floor'" sortable="'floor'"
+                filter="{'floor': 'text'}">
+              {{ task.floor }}
+            </td>
+            <td data-title="'room'" sortable="'room'"
+                filter="{'room': 'text'}">
+              {{ task.name }}
+            </td>
+            <td data-title="'name'" sortable="'name'"
+                filter="{'name': 'text'}">
+              {{ task.name }}
+            </td>
+            <td data-title="'price'" sortable="'price'">
+              {{ task.price }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div ng-class="active == 'dep' ? 'active' : ''" class="tab-pane fade in">
+      <h2>Dependencies</h2>
+    </div>
+
+    <div ng-class="active == 'time' ? 'active' : ''" class="tab-pane fade in">
+      <h2>Timeline</h2>
+    </div>
+
+    <div ng-class="active == 'todo' ? 'active' : ''" class="tab-pane fade in">
+      <h2>Todo</h2>
+    </div>
+  </div>
+</div>
+
+ 
