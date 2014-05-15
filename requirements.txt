@@ -1,0 +1,6 @@
+peewee
+flask
+ipython
+pytest
+pytest-flakes
+pyflakes
