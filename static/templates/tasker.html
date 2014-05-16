@@ -52,7 +52,7 @@
           <tr ng-repeat="task in $data">
             <td>
               <button type="button" class="btn btn-success"
-                      ng-click="task.put()" ng-if="task.dirty">
+                      ng-click="save(task)" ng-if="task.dirty">
                 save
               </button>
               <button type="button" class="btn btn-success"
