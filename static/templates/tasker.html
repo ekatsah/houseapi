@@ -59,6 +59,10 @@
                       ng-click="task.edit = true" ng-if="!task.edit">
                 edit
               </button>
+              <button type="button" class="btn btn-success"
+                      ng-click="del(task)" ng-if="!task.dirty && !task.edit">
+                x
+              </button>
             </td>
             <td data-title="'floor'" sortable="'floor'"
                 filter="{'floor': 'text'}">
