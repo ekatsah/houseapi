@@ -97,7 +97,21 @@ tasker.controller("main", function($scope, mngtable, tasks)  {
 			});
 		};
 	};
-		
+
+	$scope.del = function(task) {
+		task.remove().then(function() {
+			var index = $scope.data.indexOf(task);
+			if (index == -1) {
+				console.log("can't remove, not found");
+			} else {
+				$scope.data.splice(index, 1);
+			};
+			$scope.mngtable.reload();
+		}, function() {
+			console.log("error while removing task");
+		});
+	};
+
 	tasks.all("task").getList().then(function(collection) {
 		_.each(collection, function(item) {
 			item.dirty = false;
