@@ -65,16 +65,16 @@
               <span ng-if="!task.edit">
                 {{ task.floor }}
               </span>
-              <input class="form-control" model="task.floor" ng-if="task.edit"
-                     placeholder="Floor">
+              <input class="form-control" placeholder="Floor" ng-if="task.edit"
+                     ng-model="task.floor" ng-change="task.dirty = true">
             </td>
             <td data-title="'room'" sortable="'room'"
                 filter="{'room': 'text'}">
               <span ng-if="!task.edit">
                 {{ task.room }}
               </span>
-              <input class="form-control" model="task.room" ng-if="task.edit"
-                     placeholder="Room">
+              <input class="form-control" ng-model="task.room" ng-if="task.edit"
+                     placeholder="Room" ng-change="task.dirty = true">
             </td>
             <td data-title="'name'" sortable="'name'"
                 filter="{'name': 'text'}">
