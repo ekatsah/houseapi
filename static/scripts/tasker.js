@@ -63,7 +63,16 @@ tasker.controller("main", function($scope, mngtable, tasks)  {
 	$scope.pending_line = false;
 
 	$scope.add_line = function() {
-		$scope.data.push({dirty: true, edit: true});
+		blank_task = {
+			floor: "",
+			room: "",
+			name: "",
+			price: 0,
+
+			dirty: true,
+			edit: true,
+		};
+		$scope.data.push(blank_task);
 		$scope.mngtable.reload();
 	};
 
