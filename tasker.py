@@ -118,8 +118,7 @@ def get_one_task(id):
         task = request.json
         assert task["id"] == db_task.id
         for key, value in task.iteritems():
-            if key != "id":
-                setattr(db_task, key, value)
+            setattr(db_task, key, value)
         db_task.save()
 
     # for get and put, return object
