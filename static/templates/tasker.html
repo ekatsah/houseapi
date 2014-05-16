@@ -24,9 +24,6 @@
 
   <body style="padding: 15px 35px 50px 35px" ng-controller="main">
     <h1>HouseTasker</h1>
-    <button type="button" class="btn btn-success" ng-click="add_line()">
-      +
-    </button>
 
 <div class="panel">
   <ul id="tabs-title" class="nav nav-tabs nav-justified">
@@ -46,6 +43,9 @@
 
   <div id="tabs-content" class="tab-content">
     <div ng-class="active == 'list' ? 'active' : ''" class="tab-pane fade in">
+      <button type="button" class="btn btn-success" ng-click="add_line()">
+        Add task..
+      </button>
       <table show-filter="true" ng-table="mngtable"
              class="table ng-table-responsive">
         <tbody>
