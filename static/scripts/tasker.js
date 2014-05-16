@@ -59,9 +59,29 @@ tasker.factory("mngtable", function($filter, ngTableParams) {
 tasker.controller("main", function($scope, mngtable, tasks)  {
 	$scope.data = [];
 	$scope.active = "list";
-	$scope.mngtable = mngtable.make();
+	$scope.mngtable = mngtable.make($scope);
+	$scope.pending_line = false;
 
-	cnc.all("task").getList().then(function(collection) {
+	$scope.add_line = function() {
+		$scope.data.push({dirty: true, edit: true});
+		$scope.mngtable.reload();
+	};
+
+	$scope.save = function(task) {
+		tasks.all("task").post(task).then(function() {
+			task.dirty = false;
+			$scope.mngtable.reload();
+		}, function() {
+			console.log("error while posting");
+		});
+	};
+		
+	tasks.all("task").getList().then(function(collection) {
+		_.each(collection, function(item) {
+			item.dirty = false;
+			item.edit = false;
+		});
+
 		$scope.data = collection;
 		$scope.mngtable.reload();
 	});
