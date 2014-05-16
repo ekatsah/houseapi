@@ -77,12 +77,24 @@ tasker.controller("main", function($scope, mngtable, tasks)  {
 	};
 
 	$scope.save = function(task) {
-		tasks.all("task").post(task).then(function() {
-			task.dirty = false;
-			$scope.mngtable.reload();
-		}, function() {
-			console.log("error while posting");
-		});
+		console.log(task);
+		if ("id" in task) {
+			console.log("put task");
+			task.put().then(function() {
+				task.dirty = false;
+				$scope.mngtable.reload();
+			}, function() {
+				console.log("error while task puting");
+			});
+		} else {
+			console.log("post task");
+			tasks.all("task").post(task).then(function() {
+				task.dirty = false;
+				$scope.mngtable.reload();
+			}, function() {
+				console.log("error while posting");
+			});
+		};
 	};
 		
 	tasks.all("task").getList().then(function(collection) {
