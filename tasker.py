@@ -116,7 +116,7 @@ def get_one_task(id):
     # if we have a put, update the field in object and db
     if request.method == "PUT":
         task = request.json
-        assert task.id == db_task.id
+        assert task["id"] == db_task.id
         for key, value in task.iteritems():
             if key != "id":
                 setattr(db_task, key, value)
