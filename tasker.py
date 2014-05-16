@@ -99,9 +99,25 @@ def get_all_task():
         return task.json()
 
 
-@route("/task/<int:id>/")
+@route("/task/<int:id>/", methods=["GET", "PUT"])
 def get_one_task(id):
-    return HouseTask.select().where(HouseTask.id==id).get().json()
+    query = HouseTask.select().where(HouseTask.id == id)
+    if len(query) == 0:
+        return abort(404)
+    else:
+        db_task = query.get()
+
+    # if we have a put, update the field in object and db
+    if request.method == "PUT":
+        task = request.json
+        assert task.id == db_task.id
+        for key, value in task.iteritems():
+            if key != "id":
+                setattr(db_task, key, value)
+        db_task.save()
+
+    # for get and put, return object
+    return db_task.json()
 
 
 def run_server(port=config.tasker_rpc_port):
