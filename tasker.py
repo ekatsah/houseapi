@@ -35,17 +35,6 @@ def route(path, **options):
 def index():
     return "Tasker v-" + config.version
 
-
-@route("/task/")
-def get_all_task():
-    return [ task.json() for task in Task.select() ]
-
-
-@route("/task/<int:id>/")
-def get_one_task(id):
-    return Task.select().where(Task.id==id).get().json()
-
-
 db = Proxy()
 db.initialize(peewee.SqliteDatabase(config.database_name,
                                     threadlocals=True))
@@ -97,6 +86,16 @@ class HouseTask(peewee.Model):
 
 def db_init():
     HouseTask.create_table()
+
+
+@route("/task/")
+def get_all_task():
+    return [ task.json() for task in HouseTask.select() ]
+
+
+@route("/task/<int:id>/")
+def get_one_task(id):
+    return HouseTask.select().where(HouseTask.id==id).get().json()
 
 
 def run_server(port=config.tasker_rpc_port):
