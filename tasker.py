@@ -103,7 +103,7 @@ def get_all_task():
 @route("/task/<int:id>/", methods=["GET", "PUT", "DELETE"])
 def get_one_task(id):
     query = HouseTask.select().where(HouseTask.id == id)
-    if len(query) == 0:
+    if len(list(query)) == 0:
         return abort(404)
     else:
         db_task = query.get()
