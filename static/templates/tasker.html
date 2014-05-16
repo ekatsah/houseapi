@@ -82,10 +82,46 @@
             </td>
             <td data-title="'name'" sortable="'name'"
                 filter="{'name': 'text'}">
-              {{ task.name }}
+              <span ng-if="!task.edit">
+                {{ task.name }}
+              </span>
+              <input class="form-control" ng-model="task.name" ng-if="task.edit"
+                     placeholder="Name" ng-change="task.dirty = true">
             </td>
             <td data-title="'price'" sortable="'price'">
-              {{ task.price }}
+              <span ng-if="!task.edit">
+                {{ task.price }}
+              </span>
+              <input class="form-control" placeholder="10€" ng-if="task.edit"
+                     ng-change="task.dirty = true" ng-model="task.price">
+            </td>
+            <td data-title="'duration (h)'" sortable="'duration'">
+              <span ng-if="!task.edit">
+                {{ task.duration }}h
+              </span>
+              <input class="form-control" placeholder="2h" ng-if="task.edit"
+                     ng-change="task.dirty = true" ng-model="task.duration">
+            </td>
+            <td data-title="'valid'" sortable="'valid'">
+              <span ng-if="!task.edit">
+                <span ng-if="task.valid">Yes</span>
+                <span ng-if="!task.valid">No :(</span>
+              </span>
+              <input class="form-control" type="checkbox" ng-if="task.edit"
+                     ng-change="task.dirty = true" ng-model="task.valid">
+            </td>
+            <td data-title="'description'">
+              <span ng-if="!task.edit">
+                {{ task.description|md }}
+              </span>
+              <textarea class="form-control" ng-if="task.edit"
+                     ng-change="task.dirty = true" ng-model="task.description">
+              </textarea>
+            </td>
+            <td data-title="'todo'">
+              <ul ng-if="!task.edit">
+                <li ng-repeat="do in todo">{{ do }}</li>
+              </ul>
             </td>
           </tr>
         </tbody>
