@@ -50,6 +50,16 @@
              class="table ng-table-responsive">
         <tbody>
           <tr ng-repeat="task in $data">
+            <td>
+              <button type="button" class="btn btn-success"
+                      ng-click="task.put()" ng-if="task.dirty">
+                save
+              </button>
+              <button type="button" class="btn btn-success"
+                      ng-click="task.edit = true" ng-if="!task.edit">
+                edit
+              </button>
+            </td>
             <td data-title="'floor'" sortable="'floor'"
                 filter="{'floor': 'text'}">
               {{ task.floor }}
