@@ -100,13 +100,18 @@ def get_all_task():
         return task.json()
 
 
-@route("/task/<int:id>/", methods=["GET", "PUT"])
+@route("/task/<int:id>/", methods=["GET", "PUT", "DELETE"])
 def get_one_task(id):
     query = HouseTask.select().where(HouseTask.id == id)
     if len(query) == 0:
         return abort(404)
     else:
         db_task = query.get()
+
+    # if we have a delete, remove from db and return nothing
+    if request.method == "DELETE":
+        db_task.delete_instance()
+        return
 
     # if we have a put, update the field in object and db
     if request.method == "PUT":
