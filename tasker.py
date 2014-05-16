@@ -72,11 +72,12 @@ class HouseTask(peewee.Model):
 
 
     def json(self):
+        fmt = lambda date: date.strftime("%Y-%m-%d %H:%M:%S") if date else None
         return {"floor": self.floor,
                 "room": self.room,
                 "name": self.name,
                 "price": self.price,
-                "start_date": self.start_date.strftime("%Y-%m-%d %H:%M:%S"),
+                "start_date": fmt(self.start_date),
                 "duration": self.duration,
                 "valid": self.valid,
                 "description": self.description,
