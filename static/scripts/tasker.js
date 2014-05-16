@@ -84,14 +84,12 @@ tasker.controller("main", function($scope, mngtable, tasks)  {
 		};
 
 		if ("id" in task) {
-			console.log("put task");
 			task.put().then(function() {
 				task_load(task);
 			}, function() {
 				console.log("error while task puting");
 			});
 		} else {
-			console.log("post task");
 			tasks.all("task").post(task).then(function() {
 				task_load(task);
 			}, function() {
