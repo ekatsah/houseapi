@@ -51,7 +51,7 @@ class HouseTask(peewee.Model):
     duration = peewee.IntegerField(default=1)
     valid = peewee.BooleanField(default=False)
     description = peewee.TextField(default="")
-    s_actions = peewee.TextField(default="")
+    s_actions = peewee.TextField(default="null")
     dependencies = peewee.TextField(default="")
 
     class Meta:
