@@ -78,7 +78,7 @@ tasker.controller("main", function($scope, mngtable, tasks)  {
 
 	$scope.save = function(task) {
 		var task_load = function(task) {
-			task.ditry = false;
+			task.dirty = false;
 			task.edit = false;
 			$scope.mngtable.reload();
 		};
