@@ -89,9 +89,14 @@ def db_init():
     HouseTask.create_table()
 
 
-@route("/task/")
+@route("/task/", methods=["GET", "POST"])
 def get_all_task():
-    return [ task.json() for task in HouseTask.select() ]
+    if request.method == "GET":
+        return [ task.json() for task in HouseTask.select() ]
+    else:
+        task = HouseTask.create(**request.json)
+        app.logger.debug("created: " + str(task.json()))
+        return task.json()
 
 
 @route("/task/<int:id>/")
