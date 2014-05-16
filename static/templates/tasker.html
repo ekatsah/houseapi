@@ -62,11 +62,19 @@
             </td>
             <td data-title="'floor'" sortable="'floor'"
                 filter="{'floor': 'text'}">
-              {{ task.floor }}
+              <span ng-if="!task.edit">
+                {{ task.floor }}
+              </span>
+              <input class="form-control" model="task.floor" ng-if="task.edit"
+                     placeholder="Floor">
             </td>
             <td data-title="'room'" sortable="'room'"
                 filter="{'room': 'text'}">
-              {{ task.name }}
+              <span ng-if="!task.edit">
+                {{ task.room }}
+              </span>
+              <input class="form-control" model="task.room" ng-if="task.edit"
+                     placeholder="Room">
             </td>
             <td data-title="'name'" sortable="'name'"
                 filter="{'name': 'text'}">
