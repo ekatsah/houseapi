@@ -56,7 +56,7 @@ tasker.factory("mngtable", function($filter, ngTableParams) {
 	};
 });
 
-tasker.controller("tasker-ctrl", function($scope, mngtable, tasks)  {
+tasker.controller("main", function($scope, mngtable, tasks)  {
 	$scope.data = [];
 	$scope.active = "list";
 	$scope.mngtable = mngtable.make();
