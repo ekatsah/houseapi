@@ -53,6 +53,7 @@ class HouseTask(peewee.Model):
     description = peewee.TextField(default="")
     s_actions = peewee.TextField(default="null")
     dependencies = peewee.TextField(default="")
+    done = peewee.BooleanField(default=False)
 
     class Meta:
         database = db    
@@ -83,6 +84,7 @@ class HouseTask(peewee.Model):
                 "valid": self.valid,
                 "description": self.description,
                 "actions": self.actions,
+                "done": self.done,
                 "dependencies": self.dependencies}
 
 
