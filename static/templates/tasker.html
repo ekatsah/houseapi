@@ -14,11 +14,13 @@
     <script src="/static/3party/underscore.js"></script>
     <script src="/static/3party/restangular.js"></script>
     <script src="/static/3party/showdown.js"></script>
+    <script src="/static/3party/d3.v3.js"></script>
     <script src="/static/scripts/tasker.js"></script>
     <link href="/static/style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="/static/style/bootflat.css" rel="stylesheet" type="text/css"/>
     <link href="/static/style/ng-table.css" rel="stylesheet" type="text/css"/>
     <link href="/static/style/select2.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/style/tasker.css" rel="stylesheet" type="text/css"/>
     <title>Das Organization!</title>
   </head>
 
@@ -129,6 +131,7 @@
 
     <div ng-class="active == 'dep' ? 'active' : ''" class="tab-pane fade in">
       <h2>Dependencies</h2>
+      <div id="tree-container"></div>
     </div>
 
     <div ng-class="active == 'time' ? 'active' : ''" class="tab-pane fade in">
